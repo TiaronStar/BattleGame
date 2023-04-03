@@ -13,6 +13,8 @@
 #include "character.h"
 using namespace std;
 
+
+void encounterRate(Character* c);
 void initiateBattle(Character* c);
 void battle(Character* c);
 void attack(Character* c, Character* e);
