@@ -42,29 +42,9 @@ void initialMap(void) {
     
 }
 
-int movement(void) {
+void explore(void) {
     //initialize the players position in map
-    int player[1][2] = {10, 5};
-    char keyPress = getch();
-    switch (keyPress) {
-        case 'w':
-            player[0][0]--;
-            break;
-        case 'a':
-            player[0][1]--;
-            break;
-        case 's':
-            player[0][0]++;
-            break;
-        case 'd':
-            player[0][1]++;
-            break;
-    }
-    return player;
-}
-
-void gameMap(void) {
-    int player[1][2] = movement();
+    static int player[1][2] = {10, 5};
     string map[39][13] = {
         {"---------------------------------------"},
         {"|~~~~~~                               |"},
@@ -81,4 +61,23 @@ void gameMap(void) {
         {"---------------------------------------"}
     };
     map[player[0][0]][player[0][1]] = "P"; // Can adjust later for now player sprite is P
+    char keyPress = getch();
+    while (keyPress != 'q') {
+         switch (keyPress) {
+            case 'w':
+                player[0][0]--;
+                break;
+            case 'a':
+                player[0][1]--;
+                break;
+            case 's':
+                player[0][0]++;
+                break;
+            case 'd':
+                player[0][1]++;
+                break;
+        }
+    }
 }
+
+
