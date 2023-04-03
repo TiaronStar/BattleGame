@@ -11,5 +11,4 @@
 #include<fstream>
 using namespace std;
 
-void initialMap(void);
-void explore(void);
+void explore(Character* c);
