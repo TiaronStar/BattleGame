@@ -19,33 +19,29 @@ using namespace std;
 
 void explore(Character* c) {
   //initialize the players position in map
-  static int player[1][2] = {5, 2};
-  string map[13][39] = {
-    {"---------------------------------------"},
-    {"|~~~~~~                               |"},
-    {"|~~~~~~~~~                            |"},
-    {"|~~~~                                 |"},
-    {"|              ~~~                    |"},
-    {"|             ~~~~~                   |"},
-    {"|              ~~~                    |"},
-    {"|                                     |"},
-    {"|                                     |"},
-    {"|                                     |"},
-    {"|                                     |"},
-    {"|                                     |"},
-    {"---------------------------------------"}
+  string map[507] = {
+    {"---------------------------------------\n"
+    "|~~~~~~                               |\n"
+    "|~~~~~~~~~                            |\n"
+    "|~~~~                                 |\n"
+    "|              ~~~                    |\n"
+    "|             ~~~~~                   |\n"
+    "|              ~~~                    |\n"
+    "|                                     |\n"
+    "|                                     |\n"
+    "|                                     |\n"
+    "|                                     |\n"
+    "|                                     |\n"
+    "---------------------------------------"}
   };
-  map[player[0][0]][player[0][1]] = "P"; // Can adjust later for now player sprite is P
-    
-  for (int i = 0; i <13; i++) {
-    cout << endl;
-    for (int j = 0; j < 39; j++) {
-        cout << map[i][j];
-      }
+  static int player = 112;
+  map[player] = 'P';
+  for (int i = 0; i < 507; i++) {
+    cout << map[i];
   }
   char direction = 'w';
   while (c -> getHealth() != 0 && direction != 'q') {
-    cout << "Move: " << endl;
+    cout << endl << "Move: " << endl;
     cout << "w) Up" << endl;
     cout << "s) Down" << endl;
     cout << "a) Left" << endl;
@@ -53,24 +49,29 @@ void explore(Character* c) {
     cin >> direction;
     switch (direction) {
       case 'w':
-        player[0][0]--;
+        map[player] = "";
+        player = player + 39;
+        map[player] = 'P';
         break;
       case 'a':
-        player[0][1]--;
+        map[player] = "";
+        player--;
+        map[player] = 'P';
         break;
       case 's':
-        player[0][0]++;
+        map[player] = "";
+        player = player - 39;
+        map[player] = 'P';
         break;
       case 'd':
-        player[0][1]++;
+        map[player] = "";
+        player++;
+        map[player] = 'P';
         break;
     }
     encounterRate(c);
-    for (int i = 0; i <13; i++) {
-    cout << endl;
-    for (int j = 0; j < 39; j++) {
-        cout << map[i][j];
-      }
+    for (int i = 0; i < 507; i++) {
+    cout << map[i];
     }
   }
 }
