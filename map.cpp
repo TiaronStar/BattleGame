@@ -19,7 +19,7 @@ using namespace std;
 
 void explore(Character* c) {
   //initialize the players position in map
-  string map[507] = {
+  string map = {
     {"---------------------------------------\n"
     "|~~~~~~                               |\n"
     "|~~~~~~~~~                            |\n"
@@ -34,13 +34,15 @@ void explore(Character* c) {
     "|                                     |\n"
     "---------------------------------------"}
   };
-  static int player = 112;
-  map[player] = 'P';
+  static int player = 90;
+  map.replace(player, 1, "P");
   for (int i = 0; i < 507; i++) {
     cout << map[i];
   }
+  cout << endl;
   char direction = 'w';
   while (c -> getHealth() != 0 && direction != 'q') {
+    cout << player;
     cout << endl << "Move: " << endl;
     cout << "w) Up" << endl;
     cout << "s) Down" << endl;
@@ -49,24 +51,28 @@ void explore(Character* c) {
     cin >> direction;
     switch (direction) {
       case 'w':
-        map[player] = "";
-        player = player + 39;
-        map[player] = 'P';
+        map.replace(player, 1, " ");
+        player = player - 40;
+        cout << player<< endl;
+        map.replace(player, 1, "P");
         break;
       case 'a':
-        map[player] = "";
+        map.replace(player, 1, " ");
         player--;
-        map[player] = 'P';
+        cout << player << endl;
+        map.replace(player, 1, "P");
         break;
       case 's':
-        map[player] = "";
-        player = player - 39;
-        map[player] = 'P';
+        map.replace(player, 1, " ");
+        player = player + 40;
+        cout << player << endl;
+        map.replace(player, 1, "P");
         break;
       case 'd':
-        map[player] = "";
+        map.replace(player, 1, " ");
         player++;
-        map[player] = 'P';
+        cout << player << endl;
+        map.replace(player, 1, "P");
         break;
     }
     encounterRate(c);
