@@ -12,5 +12,4 @@
 using namespace std;
 
 void initialMap(void);
-void movement(void);
-void gameMap(void);
+void explore(void);
