@@ -82,6 +82,3 @@ int testYN(string message) {
     return userEntry;
 }
 
-
-
-
