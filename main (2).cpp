@@ -24,6 +24,7 @@ playGame (void) {
 }
 
 int main () {
+  srand(time(NULL));
   playGame ();
   return 0;
 }
