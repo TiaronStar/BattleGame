@@ -1,4 +1,4 @@
-/****************************************************************************
+                 /****************************************************************************
 * File:      character.cpp
 * Author:    Adam Stanley, Tiaron Starrine
 * Purpose:   Contains class definition for game character
@@ -60,8 +60,45 @@ void Character::displayStats(void){
     cout << "Health: " << health << endl;
     cout << "Attack: " << attack << endl;
     cout << "Defense: " << defense << endl;
+    cout << "Mana: " << mana << endl;
     cout << "Kills: " << kills << endl;
     cout << endl;
+}
+
+void Character::incrementHealth(int x) {
+    health += x;
+}
+
+void Character::incrementKills(int x) {
+    kills += x;
+}
+
+void Character::incrementMana(int x) {
+    mana += x;
+}
+
+void Character::heal(void) {
+    cout << "\nRegaining health equal to mana..." << endl;
+    health += mana;
+    mana = 0;
+    displayStats();
+}
+
+void Character::heal(int x) {
+    cout << "\nRegaining " << x << " health..." << endl;
+    health += x;
+    mana -= x;
+    displayStats();
+}
+
+int Character::operator-(const Character& c) {
+        int diff = defense - c.attack;
+        return diff;
+}
+
+int Character::operator+(const Character& c) {
+    int diff = attack - c.defense;
+        return diff;
 }
 
 Character* createCharacter(void) {

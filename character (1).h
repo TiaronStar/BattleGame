@@ -14,14 +14,13 @@ using namespace std;
 class Character {
 protected:
 	string name;
-	int level;
 	int health;
 	int attack;
 	int defense;
 	static int mana;
 	static int kills;
 public:
-	Character() { level = 1; health = 5; attack = 5; defense = 5; }
+	Character() { health = 5; attack = 5; defense = 5; }
 	~Character() { cout << "Destructor for Character" << endl; }
 	virtual void greeting() { cout << "Hello!" << endl; }
 	void setName(void);
@@ -32,9 +31,14 @@ public:
 	int getMana(void) const { return mana; };
 	int getKills(void) const { return mana; };
 	void displayStats(void);
+	void incrementMana(int x);
+	void incrementKills(int x);
+	void incrementHealth(int x);
+	void heal(void);
+	void heal(int x);
+	int operator-(const Character& c);
+	int operator+(const Character& c);
 };
-
-//int Character::mana = 0;
 
 class Wizard : public Character {
 private:
@@ -65,7 +69,7 @@ int getRandomInteger(int lowerBound, int upperBound);
 class Enemy : public Character {
 private:
 public:
-	Enemy() { health = 1; attack = 1; defense = 1; cout << "\nAn enemy has appeared!" << endl; }
+	Enemy() { health = getRandomInteger(4,10); attack = getRandomInteger(4,7); defense = getRandomInteger(4,7); cout << "\nAn enemy has appeared!" << endl; }
 	~Enemy() { cout << "Enemy has died!" << endl; }
 	void greeting() { cout << "Destroy!" << endl; }
 };

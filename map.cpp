@@ -82,4 +82,3 @@ void explore(Character* c) {
   }
 }
 
-

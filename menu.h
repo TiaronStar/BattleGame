@@ -16,3 +16,5 @@
 using namespace std;
 
 void menu(Character* c);
+int getYN(string message);
+int testYN(string message);

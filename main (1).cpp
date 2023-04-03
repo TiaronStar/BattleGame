@@ -9,20 +9,25 @@
 #include <string>
 #include <fstream>
 #include <climits>
+#include <cstdlib>
+#include <ctime>
 #include "title.h"
 #include "character.h"
 #include "menu.h"
 #include "quit.h"
+#include "map.h"
 using namespace std;
 
-void playGame(void) {
-   	Character* c;
-	printTitle();
-	c = createCharacter();
-	menu(c);
+void
+playGame (void) {
+  Character *c;
+  srand(time(nullptr));
+  titleScreen ();
+  c = createCharacter ();
+  menu (c);
 }
 
-int main() {
-	playGame();
-	return 0;
+int main () {
+  playGame ();
+  return 0;
 }
