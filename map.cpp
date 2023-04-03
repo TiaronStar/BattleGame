@@ -17,67 +17,62 @@
 #include "map.h"
 using namespace std;
 
-void initialMap(void) {
-    string map[39][13] = {
-        {"---------------------------------------"},
-        {"|~~~~~~                               |"},
-        {"|~~~~~~~~~                            |"},
-        {"|~~~~                                 |"},
-        {"|              ~~~                    |"},
-        {"|             ~~~~~                   |"},
-        {"|              ~~~                    |"},
-        {"|                                     |"},
-        {"|                                     |"},
-        {"|                                     |"},
-        {"|                                     |"},
-        {"|                                     |"},
-        {"---------------------------------------"}
-    };
-    for (int i = 0; i < 39; i++) {
-        for (int j = 0; j < 13; j ++) {
-            cout << map[i][j];
-        }
-        cout << endl;
-    }
+void explore(Character* c) {
+  //initialize the players position in map
+  static int player[1][2] = {5, 2};
+  string map[13][39] = {
+    {"---------------------------------------"},
+    {"|~~~~~~                               |"},
+    {"|~~~~~~~~~                            |"},
+    {"|~~~~                                 |"},
+    {"|              ~~~                    |"},
+    {"|             ~~~~~                   |"},
+    {"|              ~~~                    |"},
+    {"|                                     |"},
+    {"|                                     |"},
+    {"|                                     |"},
+    {"|                                     |"},
+    {"|                                     |"},
+    {"---------------------------------------"}
+  };
+  map[player[0][0]][player[0][1]] = "P"; // Can adjust later for now player sprite is P
     
-}
-
-void explore(void) {
-    //initialize the players position in map
-    static int player[1][2] = {10, 5};
-    string map[39][13] = {
-        {"---------------------------------------"},
-        {"|~~~~~~                               |"},
-        {"|~~~~~~~~~                            |"},
-        {"|~~~~                                 |"},
-        {"|              ~~~                    |"},
-        {"|             ~~~~~                   |"},
-        {"|              ~~~                    |"},
-        {"|                                     |"},
-        {"|                                     |"},
-        {"|                                     |"},
-        {"|                                     |"},
-        {"|                                     |"},
-        {"---------------------------------------"}
-    };
-    map[player[0][0]][player[0][1]] = "P"; // Can adjust later for now player sprite is P
-    char keyPress = getch();
-    while (keyPress != 'q') {
-         switch (keyPress) {
-            case 'w':
-                player[0][0]--;
-                break;
-            case 'a':
-                player[0][1]--;
-                break;
-            case 's':
-                player[0][0]++;
-                break;
-            case 'd':
-                player[0][1]++;
-                break;
-        }
+  for (int i = 0; i <13; i++) {
+    cout << endl;
+    for (int j = 0; j < 39; j++) {
+        cout << map[i][j];
+      }
+  }
+  char direction = 'w';
+  while (c -> getHealth() != 0 && direction != 'q') {
+    cout << "Move: " << endl;
+    cout << "w) Up" << endl;
+    cout << "s) Down" << endl;
+    cout << "a) Left" << endl;
+    cout << "d) Right" << endl;
+    cin >> direction;
+    switch (direction) {
+      case 'w':
+        player[0][0]--;
+        break;
+      case 'a':
+        player[0][1]--;
+        break;
+      case 's':
+        player[0][0]++;
+        break;
+      case 'd':
+        player[0][1]++;
+        break;
     }
+    encounterRate(c);
+    for (int i = 0; i <13; i++) {
+    cout << endl;
+    for (int j = 0; j < 39; j++) {
+        cout << map[i][j];
+      }
+    }
+  }
 }
 
 
