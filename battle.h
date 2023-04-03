@@ -13,7 +13,11 @@
 #include "character.h"
 using namespace std;
 
+
+void encounterRate(Character* c);
 void initiateBattle(Character* c);
 void battle(Character* c);
-void attack(Character* c, Enemy* e);
-void defend(Character* c, Enemy* e);
+void attack(Character* c, Character* e);
+void defend(Character* c, Character* e);
+void enemyMove(Character* c, Character* e);
+void healCharacter(Character* c);
