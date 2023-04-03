@@ -13,6 +13,7 @@
 #include "character.h"
 #include "quit.h"
 #include "battle.h"
+#include "map.h"
 using namespace std;
 
 void menu(Character* c) {
@@ -22,6 +23,7 @@ void menu(Character* c) {
 	    cout << "1) Go to battle!" << endl;
 	    cout << "2) Heal." << endl;
 	    cout << "3) Display Stats." << endl;
+	    cout << "4) Explore." << endl;
 	    cout << "0) Quit game.\n" << endl;
 	    cin >> choice;
 	    while (!cin || (choice > 4 || choice < 0)) {
@@ -32,6 +34,7 @@ void menu(Character* c) {
 	        cout << "1) Go to battle!" << endl;
     	    cout << "2) Heal" << endl;
     	    cout << "3) Display Stats" << endl;
+    	    cout << "4) Explore." << endl;
     	    cout << "0) Quit game.\n" << endl;
     	    cin >> choice;
 	    }
@@ -43,6 +46,9 @@ void menu(Character* c) {
 	    }
 	    else if (choice == 3) {
 		    c->displayStats();
+	    }
+	    else if (choice == 4) {
+	        explore(c);
 	    }
 	    else if (choice == 0) {
 	        quit(c);
