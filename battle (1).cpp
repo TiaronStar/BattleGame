@@ -15,6 +15,12 @@
 #include "menu.h"
 using namespace std;
 
+void encounterRate(Character* c) {
+    int chance = rand() % 100 + 1;
+    if (chance <= 10)
+      initiateBattle(c);
+}
+
 void initiateBattle(Character* c) {
     int x = 0;
     cout << "\nWould you like to battle?" << endl;
