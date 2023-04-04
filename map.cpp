@@ -35,50 +35,54 @@ void explore(Character* c) {
     "---------------------------------------"}
   };
   static int player = 90;
-  map.replace(player, 1, "P");
-  for (int i = 0; i < 507; i++) {
+  if (map.substr(player, 1) == " ") {
+    map.replace(player, 1, "P");
+  }
+  for (int i = 0; i < map.length(); i++) {
     cout << map[i];
   }
   cout << endl;
   char direction = 'w';
   while (c -> getHealth() != 0 && direction != 'q') {
-    cout << player;
     cout << endl << "Move: " << endl;
     cout << "w) Up" << endl;
-    cout << "s) Down" << endl;
     cout << "a) Left" << endl;
+    cout << "s) Down" << endl;
     cout << "d) Right" << endl;
     cin >> direction;
     switch (direction) {
       case 'w':
-        map.replace(player, 1, " ");
-        player = player - 40;
-        cout << player<< endl;
-        map.replace(player, 1, "P");
+        if (map.substr((player - 40), 1) == " ") {
+          map.replace(player, 1, " ");
+          player = player - 40;
+          map.replace(player, 1, "P");
+        }
         break;
       case 'a':
-        map.replace(player, 1, " ");
-        player--;
-        cout << player << endl;
-        map.replace(player, 1, "P");
+        if (map.substr((player - 1), 1) == " ") {
+          map.replace(player, 1, " ");
+          player--;
+          map.replace(player, 1, "P");
+        }
         break;
       case 's':
-        map.replace(player, 1, " ");
-        player = player + 40;
-        cout << player << endl;
-        map.replace(player, 1, "P");
+        if (map.substr((player + 40), 1) == " ") {
+          map.replace(player, 1, " ");
+          player = player + 40;
+          map.replace(player, 1, "P");
+        }
         break;
       case 'd':
-        map.replace(player, 1, " ");
-        player++;
-        cout << player << endl;
-        map.replace(player, 1, "P");
+        if (map.substr((player + 1), 1) == " ") {
+          map.replace(player, 1, " ");
+          player++;
+          map.replace(player, 1, "P");
+        }
         break;
     }
     encounterRate(c);
-    for (int i = 0; i < 507; i++) {
+    for (int i = 0; i < map.length(); i++) {
     cout << map[i];
     }
   }
 }
-
