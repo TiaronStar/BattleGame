@@ -18,7 +18,7 @@ using namespace std;
 void encounterRate(Character* c) {
     int chance = rand() % 100 + 1;
     if (chance <= 10)
-      initiateBattle(c);
+      battle(c);
 }
 
 void initiateBattle(Character* c) {
@@ -171,5 +171,3 @@ void healCharacter(Character* c) {
         menu(c);
     }
 }
-
-
